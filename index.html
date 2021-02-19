@@ -70,13 +70,21 @@
             <td><input type="number" min="0"/></td>
             <td class="subtotal">-</td>
           </tr>
-          <tr>
-            <td><input type="text"></td>
+          <!-- <tr>
+            <td><input class="item" type="text"></td>
             <td><input class="price"></td>
             <td><button id="add" class="btn">Add</button></td>
             <td>-</td>
-          </tr>
+          </tr> -->
         </tbody>
+        <tfoot>
+          <tr>
+            <td><input class="item" type="text"></td>
+            <td><input class="price" type="number"></td>
+            <td><button id="add" class="btn" disabled>Add</button></td>
+            <td>-</td>
+          </tr>
+        </tfoot>
       </table>
 
       <div id="total">
