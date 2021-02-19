@@ -7,6 +7,8 @@ $(document).ready(function() {
 
   $('#add').on('click', addItem)
 
+  $('tbody').on('click', '.remove', removeItem)
+
 })
 
 function calculatePrice() {
@@ -54,12 +56,21 @@ function addItem() {
       <td>${price}</td>
       <td><input type="number" min="0"/></td>
       <td class="subtotal">-</td>
+      <td><span class="fas fa-trash remove"></span></td>
     </tr>`
   $('table tbody').append(newRow)
   // clear input elements
   row.find('.item').val('')
   row.find('.price').val('')
   $('#add').prop('disabled', true)
+}
+
+function removeItem() {
+  console.log(`removeItem`)
+  let row = $(this).parent().parent()
+  console.log(row)
+  row.remove()
+  totalPrice()
 }
 
 function totalPrice() {
@@ -82,7 +93,7 @@ function totalPrice() {
     console.log(price)
   })
   console.log(subTotalVals)
-  let totalPrice = subTotalVals.reduce((a, b) => a + b)
+  let totalPrice = subTotalVals.reduce((a, b) => a + b, 0)
   totalPrice = parseInt(totalPrice * 100)/100
   console.log(totalPrice)
   $('#total span').text(totalPrice)
