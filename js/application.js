@@ -1,17 +1,4 @@
-$(document).ready(function() {
-  console.log(`$(document).ready`)
-
-  $('tbody').on('change', 'input', calculatePrice)
-
-  $('tfoot').on('change', enableAdd)
-
-  $('#add').on('click', addItem)
-
-  $('tbody').on('click', '.remove', removeItem)
-
-})
-
-function calculatePrice() {
+const calculatePrice = function() {
   let qty = $(this).val()
   console.log(qty)
   let price = $(this).parent().prev().text()
@@ -27,7 +14,7 @@ function calculatePrice() {
   totalPrice()
 }
 
-function enableAdd() {
+const enableAdd = function() {
   console.log(`enableAdd()`)
   let tfoot = $(this)
   let item = tfoot.find('.item').val()
@@ -43,7 +30,7 @@ function enableAdd() {
   }
 }
 
-function addItem() {
+const addItem = function() {
   console.log(`add clicked`)
   let row = $(this).parent().parent()
   let item = row.find('.item').val()
@@ -65,7 +52,7 @@ function addItem() {
   $('#add').prop('disabled', true)
 }
 
-function removeItem() {
+const removeItem = function() {
   console.log(`removeItem`)
   let row = $(this).parent().parent()
   console.log(row)
@@ -73,7 +60,7 @@ function removeItem() {
   totalPrice()
 }
 
-function totalPrice() {
+const totalPrice = function() {
   console.log(`totalPrice`)
   let subtotals = $('table').find('.subtotal')
   console.log(subtotals)
@@ -100,3 +87,16 @@ function totalPrice() {
 }
 
 console.log(`js loaded`)
+
+$(document).ready(function() {
+  console.log(`$(document).ready`)
+
+  $('tbody').on('change', 'input', calculatePrice)
+
+  $('tfoot').on('change', enableAdd)
+
+  $('#add').on('click', addItem)
+
+  $('tbody').on('click', '.remove', removeItem)
+
+})
